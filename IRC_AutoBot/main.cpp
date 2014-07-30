@@ -13,7 +13,7 @@ int main(int argc, const char * argv[])
 {
     Grid myGrid = Grid(3,3);
     
-    printf("Rows: %i\nCols: %i\n", myGrid.numberOfRows, myGrid.numberOfCols);
+    printf("Rows: %i\nCols: %i\n", myGrid.getNumberOfRows(), myGrid.getNumberOfCols());
     
     myGrid.setRowColToValue(2, 2, 5);
     printf("Value at 2,2: %i\n", myGrid.valueAtRowCol(2, 2));

@@ -11,11 +11,16 @@ typedef bool boolean;
 class Grid {
     void init(int,int);
     int **grid;
+    int numberOfRows;
+    int numberOfCols;
 public:
     Grid();
     Grid(int,int);
-    int numberOfRows;
-    int numberOfCols;
+    
+    int getNumberOfRows();
+    int getNumberOfCols();
+    
+    boolean isValidRowCol(int,int);
     int valueAtRowCol(int,int);
     boolean setRowColToValue(int,int,int);
 };

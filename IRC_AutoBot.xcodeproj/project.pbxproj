@@ -44,6 +44,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF0754D51989265100B410C1 /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				DF2459B11988EBDE0010CDDE /* Grid.h */,
+				DF2459B01988EBDE0010CDDE /* Grid.cpp */,
+			);
+			name = Grid;
+			sourceTree = "<group>";
+		};
 		DF24599B1988EB730010CDDE = {
 			isa = PBXGroup;
 			children = (
@@ -64,8 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				DF2459A71988EB730010CDDE /* main.cpp */,
-				DF2459B01988EBDE0010CDDE /* Grid.cpp */,
-				DF2459B11988EBDE0010CDDE /* Grid.h */,
+				DF0754D51989265100B410C1 /* Grid */,
 				DF2459A91988EB730010CDDE /* IRC_AutoBot.1 */,
 			);
 			path = IRC_AutoBot;

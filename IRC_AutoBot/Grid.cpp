@@ -36,12 +36,27 @@ void Grid::init(int rows, int cols) {
     }
 }
 
+int Grid::getNumberOfRows() {
+    return numberOfRows;
+}
+
+int Grid::getNumberOfCols() {
+    return numberOfCols;
+}
+
+boolean Grid::isValidRowCol(int row, int col) {
+    return (row>0 && col>0) && (row<numberOfRows && col<numberOfCols);
+}
+
 int Grid::valueAtRowCol(int row, int col) {
-    return grid[row][col];
+    if (isValidRowCol(row, col)) {
+        return grid[row][col];
+    }
+    return 0;
 }
 
 boolean Grid::setRowColToValue(int row, int col, int value) {
-    if (row < numberOfRows && col <numberOfCols) {
+    if (isValidRowCol(row, col)) {
         grid[row][col] = value;
         return true;
     }
