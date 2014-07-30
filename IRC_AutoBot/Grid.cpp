@@ -48,7 +48,7 @@ boolean Grid::isValidRowCol(int row, int col) {
     return (row>0 && col>0) && (row<numberOfRows && col<numberOfCols);
 }
 
-int Grid::valueAtRowCol(int row, int col) {
+int Grid::getValueAtRowCol(int row, int col) {
     if (isValidRowCol(row, col)) {
         return grid[row][col];
     }

@@ -21,6 +21,6 @@ public:
     int getNumberOfCols();
     
     boolean isValidRowCol(int,int);
-    int valueAtRowCol(int,int);
+    int getValueAtRowCol(int,int);
     boolean setRowColToValue(int,int,int);
 };
