@@ -10,6 +10,7 @@
 		DF2459A81988EB730010CDDE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF2459A71988EB730010CDDE /* main.cpp */; };
 		DF2459AA1988EB730010CDDE /* IRC_AutoBot.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF2459A91988EB730010CDDE /* IRC_AutoBot.1 */; };
 		DF2459B21988EBDE0010CDDE /* Grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF2459B01988EBDE0010CDDE /* Grid.cpp */; };
+		DF423DB8198B771D00E7CEFA /* GridSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF423DB6198B771D00E7CEFA /* GridSolver.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		DF2459A91988EB730010CDDE /* IRC_AutoBot.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = IRC_AutoBot.1; sourceTree = "<group>"; };
 		DF2459B01988EBDE0010CDDE /* Grid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Grid.cpp; sourceTree = "<group>"; };
 		DF2459B11988EBDE0010CDDE /* Grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grid.h; sourceTree = "<group>"; };
+		DF423DB6198B771D00E7CEFA /* GridSolver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridSolver.cpp; sourceTree = "<group>"; };
+		DF423DB7198B771D00E7CEFA /* GridSolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridSolver.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,10 +76,20 @@
 			isa = PBXGroup;
 			children = (
 				DF2459A71988EB730010CDDE /* main.cpp */,
+				DF423DB9198B7C2600E7CEFA /* GridSolver */,
 				DF0754D51989265100B410C1 /* Grid */,
 				DF2459A91988EB730010CDDE /* IRC_AutoBot.1 */,
 			);
 			path = IRC_AutoBot;
+			sourceTree = "<group>";
+		};
+		DF423DB9198B7C2600E7CEFA /* GridSolver */ = {
+			isa = PBXGroup;
+			children = (
+				DF423DB7198B771D00E7CEFA /* GridSolver.h */,
+				DF423DB6198B771D00E7CEFA /* GridSolver.cpp */,
+			);
+			name = GridSolver;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,6 +145,7 @@
 			files = (
 				DF2459A81988EB730010CDDE /* main.cpp in Sources */,
 				DF2459B21988EBDE0010CDDE /* Grid.cpp in Sources */,
+				DF423DB8198B771D00E7CEFA /* GridSolver.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

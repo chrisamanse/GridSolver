@@ -44,8 +44,12 @@ int Grid::getNumberOfCols() {
     return numberOfCols;
 }
 
+int Grid::getArea() {
+    return numberOfRows*numberOfCols;
+}
+
 boolean Grid::isValidRowCol(int row, int col) {
-    return (row>0 && col>0) && (row<numberOfRows && col<numberOfCols);
+    return (row>=0 && col>=0) && (row<numberOfRows && col<numberOfCols);
 }
 
 int Grid::getValueAtRowCol(int row, int col) {

@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 Joe Christopher Paul Amanse. All rights reserved.
 //
 
+#ifndef GRID_H
+#define GRID_H
+
 typedef bool boolean;
 
 class Grid {
@@ -19,8 +22,11 @@ public:
     
     int getNumberOfRows();
     int getNumberOfCols();
+    int getArea();
     
     boolean isValidRowCol(int,int);
     int getValueAtRowCol(int,int);
     boolean setRowColToValue(int,int,int);
 };
+
+#endif
