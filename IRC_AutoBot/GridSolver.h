@@ -12,6 +12,17 @@
 #include <iostream>
 #include "Grid.h"
 
+
+enum GSMove {
+    GSMoveNone = 0,
+    GSMoveUp = 1,
+    GSMoveRight,
+    GSMoveDown,
+    GSMoveLeft
+};
+
+//typedef GSMovement GSMovement;
+
 class GridSolver {
     Grid grid;
     
@@ -36,6 +47,8 @@ public:
     boolean setNodeAtPoint(int row, int col);
     
     void drawWaveform();
+    
+    GSMove *getMoves(int& maxMoves);
     
     // Debug
     void logValues();

@@ -49,9 +49,7 @@ boolean GridSolver::setNodeAtPoint(int row, int col) {
 
 boolean GridSolver::replaceValueAtPointWithValue(int row, int col, int value) {
     if (grid.isValidRowCol(row, col)) {
-        int valueAtPoint = grid.getValueAtRowCol(row, col);
-        
-        if (valueAtPoint == 0
+        if (grid.getValueAtRowCol(row, col) == 0
 //            ||
 //            (valueAtPoint > value &&
 //             valueAtPoint != grid.getArea()+1
@@ -124,6 +122,38 @@ void GridSolver::drawWaveform() {
             break;
         }
     }
+}
+
+GSMove * GridSolver::getMoves(int& maxMoves) {
+    maxMoves = grid.getValueAtRowCol(targetRow, targetCol)-1;
+    GSMove *moves = new GSMove[maxMoves];
+    
+    int currentRow = targetRow;
+    int currentCol = targetCol;
+//    GSMove previousMove = GSMoveNone;
+    
+    for (int currentValue = maxMoves+1; currentValue > 1; currentValue--) {
+        // Check adjacents
+        if (grid.getValueAtRowCol(currentRow+1, currentCol) < currentValue &&
+            grid.getValueAtRowCol(currentRow+1, currentCol) != 0) {
+            moves[currentValue-2] = GSMoveDown;
+            currentRow++;
+        } else if (grid.getValueAtRowCol(currentRow, currentCol+1) < currentValue &&
+                   grid.getValueAtRowCol(currentRow, currentCol+1) != 0) {
+            moves[currentValue-2] = GSMoveLeft;
+            currentCol++;
+        } else if (grid.getValueAtRowCol(currentRow-1, currentCol) < currentValue &&
+                   grid.getValueAtRowCol(currentRow-1, currentCol) != 0) {
+            moves[currentValue-2] = GSMoveUp;
+            currentRow--;
+        } else if (grid.getValueAtRowCol(currentRow, currentCol-1) < currentValue &&
+                   grid.getValueAtRowCol(currentRow, currentCol-1) != 0) {
+            moves[currentValue-2] = GSMoveRight;
+            currentCol--;
+        }
+    }
+    
+    return moves;
 }
 
 #pragma mark - Debug
