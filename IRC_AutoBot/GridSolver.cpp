@@ -124,8 +124,17 @@ void GridSolver::drawWaveform() {
     }
 }
 
-GSMove * GridSolver::getMoves(int& maxMoves) {
+GSMove * GridSolver::getMovesFromShortestPathAndGetMaxMoves(int& maxMoves) {
+    drawWaveform();
+    
     maxMoves = grid.getValueAtRowCol(targetRow, targetCol)-1;
+    // If impossible
+    if (maxMoves <= 0) {
+        maxMoves = 1;
+        GSMove* move = new GSMove[1];
+        move[0] = GSMoveNone;
+        return move;
+    }
     GSMove *moves = new GSMove[maxMoves];
     
     int currentRow = targetRow;

@@ -36,6 +36,7 @@ class GridSolver {
     
     boolean replaceValueAtPointWithValue(int row, int col, int value);
     void drawWaveValue(int number, int& count);
+    void drawWaveform();
 public:
     GridSolver();
     GridSolver(Grid aGrid);
@@ -46,9 +47,7 @@ public:
     boolean setTargetPoint(int row, int col);
     boolean setNodeAtPoint(int row, int col);
     
-    void drawWaveform();
-    
-    GSMove *getMoves(int& maxMoves);
+    GSMove *getMovesFromShortestPathAndGetMaxMoves(int& maxMoves);
     
     // Debug
     void logValues();

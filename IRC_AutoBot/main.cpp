@@ -37,10 +37,9 @@ int main(int argc, const char * argv[])
     
     clock_t startTime = clock();
     
-    myGridSolver.drawWaveform();
-    
+    // Get moves
     int maxMoves = 0;
-    GSMove *moves = myGridSolver.getMoves(maxMoves);
+    GSMove *moves = myGridSolver.getMovesFromShortestPathAndGetMaxMoves(maxMoves);
     
     clock_t endTime = clock();
     
@@ -68,7 +67,7 @@ int main(int argc, const char * argv[])
                 printf("Left,");
                 break;
             default:
-                printf("Zero,");
+                printf("None,");
                 break;
         }
     }
