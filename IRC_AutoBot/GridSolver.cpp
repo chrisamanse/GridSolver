@@ -130,26 +130,76 @@ GSMove * GridSolver::getMoves(int& maxMoves) {
     
     int currentRow = targetRow;
     int currentCol = targetCol;
-//    GSMove previousMove = GSMoveNone;
+    GSMove previousMove = GSMoveNone;
     
     for (int currentValue = maxMoves+1; currentValue > 1; currentValue--) {
+        // Check if previous move possible
+        switch (previousMove) {
+            case GSMoveDown:
+                if (grid.getValueAtRowCol(currentRow+1, currentCol) < currentValue &&
+                    grid.getValueAtRowCol(currentRow+1, currentCol) != 0) {
+                    moves[currentValue-2] = GSMoveDown;
+                    currentRow++;
+                    previousMove = GSMoveDown;
+                    continue;
+                }
+                break;
+            case GSMoveLeft:
+                if (grid.getValueAtRowCol(currentRow, currentCol+1) < currentValue &&
+                    grid.getValueAtRowCol(currentRow, currentCol+1) != 0) {
+                    moves[currentValue-2] = GSMoveLeft;
+                    currentCol++;
+                    previousMove = GSMoveLeft;
+                    continue;
+                }
+                break;
+            case GSMoveUp:
+                if (grid.getValueAtRowCol(currentRow-1, currentCol) < currentValue &&
+                    grid.getValueAtRowCol(currentRow-1, currentCol) != 0) {
+                    moves[currentValue-2] = GSMoveUp;
+                    currentRow--;
+                    previousMove = GSMoveUp;
+                    continue;
+                }
+                break;
+            case GSMoveRight:
+                if (grid.getValueAtRowCol(currentRow, currentCol-1) < currentValue &&
+                    grid.getValueAtRowCol(currentRow, currentCol-1) != 0) {
+                    moves[currentValue-2] = GSMoveRight;
+                    currentCol--;
+                    previousMove = GSMoveRight;
+                    continue;
+                }
+                break;
+            default:
+                break;
+        }
+        
         // Check adjacents
         if (grid.getValueAtRowCol(currentRow+1, currentCol) < currentValue &&
-            grid.getValueAtRowCol(currentRow+1, currentCol) != 0) {
+            grid.getValueAtRowCol(currentRow+1, currentCol) != 0 &&
+            previousMove != GSMoveDown) {
             moves[currentValue-2] = GSMoveDown;
             currentRow++;
+            previousMove = GSMoveDown;
         } else if (grid.getValueAtRowCol(currentRow, currentCol+1) < currentValue &&
-                   grid.getValueAtRowCol(currentRow, currentCol+1) != 0) {
+                   grid.getValueAtRowCol(currentRow, currentCol+1) != 0 &&
+                   previousMove != GSMoveLeft) {
             moves[currentValue-2] = GSMoveLeft;
             currentCol++;
+            previousMove = GSMoveLeft;
         } else if (grid.getValueAtRowCol(currentRow-1, currentCol) < currentValue &&
-                   grid.getValueAtRowCol(currentRow-1, currentCol) != 0) {
+                   grid.getValueAtRowCol(currentRow-1, currentCol) != 0 &&
+                   previousMove != GSMoveUp) {
             moves[currentValue-2] = GSMoveUp;
             currentRow--;
+            previousMove = GSMoveUp;
         } else if (grid.getValueAtRowCol(currentRow, currentCol-1) < currentValue &&
-                   grid.getValueAtRowCol(currentRow, currentCol-1) != 0) {
+                   grid.getValueAtRowCol(currentRow, currentCol-1) != 0 &&
+                   previousMove != GSMoveRight) {
             moves[currentValue-2] = GSMoveRight;
             currentCol--;
+            previousMove = GSMoveRight;
         }
     }
     

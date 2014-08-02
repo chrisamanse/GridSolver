@@ -30,7 +30,7 @@ int main(int argc, const char * argv[])
     myGridSolver.setTargetPoint(2, 2);
     
     // Nodes are invalid points
-    myGridSolver.setNodeAtPoint(2, 1);
+    myGridSolver.setNodeAtPoint(0, 1);
     myGridSolver.setNodeAtPoint(1, 2);
     myGridSolver.setNodeAtPoint(2, 3);
     
