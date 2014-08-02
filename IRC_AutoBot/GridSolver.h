@@ -21,17 +21,19 @@ class GridSolver {
     int targetRow;
     int targetCol;
     
-    void replaceValueAtPointWithValue(int,int,int);
-    void drawWaveValue(int);
+    boolean targetFound;
+    
+    boolean replaceValueAtPointWithValue(int row, int col, int value);
+    void drawWaveValue(int number, int& count);
 public:
     GridSolver();
-    GridSolver(Grid);
+    GridSolver(Grid aGrid);
     
     Grid getGrid();
     
-    boolean setStartingPoint(int,int);
-    boolean setTargetPoint(int,int);
-    boolean setNodeAtPoint(int,int);
+    boolean setStartingPoint(int row, int col);
+    boolean setTargetPoint(int row, int col);
+    boolean setNodeAtPoint(int row, int col);
     
     void drawWaveform();
     

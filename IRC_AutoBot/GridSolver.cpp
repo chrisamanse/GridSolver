@@ -47,43 +47,82 @@ boolean GridSolver::setNodeAtPoint(int row, int col) {
     return false;
 }
 
-void GridSolver::replaceValueAtPointWithValue(int row, int col, int value) {
+boolean GridSolver::replaceValueAtPointWithValue(int row, int col, int value) {
     if (grid.isValidRowCol(row, col)) {
         int valueAtPoint = grid.getValueAtRowCol(row, col);
         
-        if (valueAtPoint == 0 ||
-            (valueAtPoint > value &&
-             valueAtPoint != grid.getArea()+1
-             )
+        if (valueAtPoint == 0
+//            ||
+//            (valueAtPoint > value &&
+//             valueAtPoint != grid.getArea()+1
+//             ) // Unnecessary condition: only necessary condition is when value at point is 0
             ) {
             grid.setRowColToValue(row, col, value);
+            
+            // Check if target found
+            if (targetRow == row && targetCol == col) {
+                targetFound = true;
+            }
+            
+            return true;
         }
     }
+    return false;
 }
 
-void GridSolver::drawWaveValue(int number) {
+void GridSolver::drawWaveValue(int number, int& count) {
     int numberOfRows = grid.getNumberOfRows();
     int numberOfCols = grid.getNumberOfCols();
     
     int previousNumber = number-1;
     
+    int currentCount = 0;
+    int newCount = 0;
+    boolean shouldBreak = false;
+    
     for (int row = 0; row < numberOfRows; row++) {
         for (int col = 0; col < numberOfCols; col++) {
             int pointValue = grid.getValueAtRowCol(row, col);
             if (pointValue == previousNumber) {
-                // Replace Values at adjacent
-                replaceValueAtPointWithValue(row+1, col, number);
-                replaceValueAtPointWithValue(row, col+1, number);
-                replaceValueAtPointWithValue(row-1, col, number);
-                replaceValueAtPointWithValue(row, col-1, number);
+                
+                // Replace values at adjacent and increase count when replaced
+                if (replaceValueAtPointWithValue(row+1, col, number)) {
+                    newCount++;
+                }
+                if (replaceValueAtPointWithValue(row, col+1, number) && !targetFound) {
+                    newCount++;
+                }
+                if (replaceValueAtPointWithValue(row-1, col, number) && !targetFound) {
+                    newCount++;
+                }
+                if (replaceValueAtPointWithValue(row, col-1, number) && !targetFound) {
+                    newCount++;
+                }
+                
+                // Check if all points found
+                currentCount++;
+                if (currentCount == count || targetFound) {
+                    shouldBreak = true;
+                    break;
+                }
             }
         }
+        if (shouldBreak) {
+            break;
+        }
     }
+    count = newCount;
 }
 
 void GridSolver::drawWaveform() {
+    int initialCount = 1;
     for (int i = 2; i <= grid.getArea(); i++) {
-        drawWaveValue(i);
+        drawWaveValue(i, initialCount);
+        
+        // If target found, dont continue loop
+        if (targetFound) {
+            break;
+        }
     }
 }
 
