@@ -43,10 +43,9 @@ int main(int argc, const char * argv[])
     
     clock_t endTime = clock();
     
-    unsigned long start = startTime;
-    unsigned long end = endTime;
+    double timeTaken = (endTime - startTime)/(double)CLOCKS_PER_SEC;
     
-    printf("\nTime taken: %lums\n", end-start);
+    printf("\nTime taken: %.3f us\n", timeTaken*1000000);
     
     myGridSolver.logValues();
     
